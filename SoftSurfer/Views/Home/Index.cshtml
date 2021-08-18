@@ -1,0 +1,49 @@
+﻿@*@@{
+        ViewData["Title"] = "Home Page";
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">The Programmer's Cat</h1>
+        <img id="catImage" src="~/lib/Images/cat-computer.jpg" alt="cat">
+    </div> *@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Simply</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="~/css/home.css">
+</head>
+
+<body>
+    <div id="hero-image">
+        <div class="wrapper">
+            <h2>
+                <strong>Elegant like the code </strong><br />
+                we wish we could write
+            </h2>
+            @{ 
+                var random = new Random();
+                string luckyPage = "";
+                int choice = random.Next(3);
+                if (choice == 0)
+                {
+                    luckyPage = "Chronometer";
+                } else if (choice == 1)
+                {
+                    luckyPage = "StressRelief";
+                } else
+                {
+                    luckyPage = "ToDoList";
+                }
+            }
+            <a href="@luckyPage" class="button-1">I'm Feeling Lucky</a>
+        </div>
+    </div>
+
+
+</body>
+</html>

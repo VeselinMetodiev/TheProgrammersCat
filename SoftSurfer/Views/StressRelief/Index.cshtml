@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        Stress Relief
+    </title>
+</head>
+
+<body id="body" style="text-align:center;">
+
+    <h1 style="color:green;">
+        Stress Relief
+    </h1>
+
+    <button onclick="relieveMe()">
+        Goodbye stress
+    </button>
+
+    <p id="joke" style="color:green; font-size: 25px; font-weight: bold;">
+    </p>
+    <p id="GFG_UP" style="font-size: 15px; font-weight: bold;">
+    </p>
+    <div id="divPlayer1"></div>
+
+    <script>
+
+        let joke = document.getElementById('joke');
+
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player1;
+
+        function play1() {
+            player1.playVideo();
+        }
+
+        function relieveMe() {
+            let randomNumA = Math.floor(Math.random() * 301) + 300;
+            let img = document.createElement('img');
+            let imageSource = 'http://placekitten.com/' + randomNumA + "/" + randomNumA;
+            img.src = imageSource;
+            document.getElementById('GFG_UP').appendChild(img);
+            fetch('https://geek-jokes.sameerkumar.website/api?format=json')
+                .then(response => {
+                    return response.text();
+                })
+                .then(users => {
+                    joke.innerHTML = users;
+                });
+            player1 = new YT.Player('divPlayer1', {
+                height: '390',
+                width: '640',
+                videoId: '1yarN0hMOqE',
+            });
+        }
+    </script>
+</body>
+
+</html>
